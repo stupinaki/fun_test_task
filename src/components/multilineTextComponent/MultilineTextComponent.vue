@@ -17,9 +17,10 @@ export default {
   },
   computed: {
     array() {
-      const { value } = this.$props;
-      const newStr = value.replace(/\[/g, "   [");
-      return newStr.split('   ').map(s => s.trim() && s).filter(s => s);
+      return this.$props.value
+          .split('[')
+          .filter(line => line)
+          .map(line => "[" + line.slice(0));
     }
   }
 }
