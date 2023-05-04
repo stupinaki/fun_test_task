@@ -33,7 +33,6 @@
             @select-update="onSelectUpdate"
         />
       </div>
-
     </template>
     <Column
         v-for="header in selectedHeadersValue"
@@ -89,7 +88,6 @@ export default {
         {field: "count", header: "Count"}
       ],
       searchText: undefined,
-      isSearchSettingsOpen: false,
       searchResult: [
         {
           name: "name 1",
@@ -115,21 +113,28 @@ export default {
       this.$data.selectedColumnsForSearch = value;
     },
     initSearch() {
-      const { searchText, products, selectedHeadersValue } = this.$data;
-      const headers = selectedHeadersValue.map(h => h.field);
-      this.$data.searchResult = products.filter(p => {
-        return headers.some(h => {
-          const value = p[h].toString().toLowerCase();
-          return value.includes(searchText.toLowerCase());
-        })
-      })
+      const { searchText, products, selectedHeadersValue, selectedColumnsForSearch } = this.$data;
+       if(selectedColumnsForSearch.length) {
+         const selectedHeaders = selectedColumnsForSearch.map(h => h.field);
+         this.$data.searchResult = products.filter(p => {
+           return selectedHeaders.some(h => {
+             const value = p[h].toString().toLowerCase();
+             return value.includes(searchText.toLowerCase());
+           })
+         })
+       } else {
+         const headers = selectedHeadersValue.map(h => h.field);
+         this.$data.searchResult = products.filter(p => {
+           return headers.some(h => {
+             const value = p[h].toString().toLowerCase();
+             return value.includes(searchText.toLowerCase());
+           })
+         })
+       }
     },
     clearSearchText() {
       this.$data.searchText = "";
     },
-    toggleSearchSettings() {
-      this.$data.isSearchSettingsOpen = !this.$data.isSearchSettingsOpen;
-    }
   },
 }
 </script>
@@ -144,8 +149,6 @@ export default {
   width: 100%;
   height: 100%;
   border-top-right-radius: 0;
-  border-top-left-radius: 0;
-  border-bottom-left-radius: 0;
   border-bottom-right-radius: 0;
 }
 .p-input-icon-right {
