@@ -140,7 +140,7 @@ export default {
 <style scoped>
 .table-with-search-headers {
   display: grid;
-  grid-template-columns: calc(20% - 4px) calc(60% - 4px) calc(20% - 4px);
+  grid-template-columns: calc(20% - 8px) calc(60% - 8px) calc(20% - 8px);
   gap: 12px;
 }
 .p-inputtext {
