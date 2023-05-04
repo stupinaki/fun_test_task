@@ -12,7 +12,10 @@
         option-label="name"
         @select-update="onSelectUpdate"
     />
-    <MultilineTextTable/>
+<!--    <MultilineTextTable/>-->
+    <TableWithSearchComponent>
+
+    </TableWithSearchComponent>
   </div>
 
 </template>
@@ -21,10 +24,11 @@
 import 'primeicons/primeicons.css';
 import 'primevue/resources/primevue.min.css';
 import 'primevue/resources/themes/saga-blue/theme.css';
-import LinkComponent from "@/components/linkComponent/LinkComponent.vue"
-import SelectComponent from "@/components/selectComponent/SelectComponent.vue"
+import LinkComponent from "@/components/linkComponent/LinkComponent.vue";
+import SelectComponent from "@/components/selectComponent/SelectComponent.vue";
 import MultilineTextTable from "@/components/multilineTextComponent/MultilineTextTable.vue";
-import DataTimePickerComponent from "@/components/dateTimePickerComponent/DateTimePickerComponent.vue"
+import DataTimePickerComponent from "@/components/dateTimePickerComponent/DateTimePickerComponent.vue";
+import TableWithSearchComponent from "./components/tableWithSearch/TableWithSearchComponent.vue";
 
 export default {
   name: "App",
@@ -32,7 +36,8 @@ export default {
     LinkComponent,
     SelectComponent,
     MultilineTextTable,
-    DataTimePickerComponent
+    DataTimePickerComponent,
+    TableWithSearchComponent
   },
   data() {
     return {
@@ -44,7 +49,7 @@ export default {
         {name: 'Paris', code: 'PRS'}
       ],
       selectedTime: new Date(),
-      selectedSelectValue: [{name: 'Paris', code: 'PRS'}],
+      selectedSelectValue: [],
     }
   },
   methods: {
@@ -65,5 +70,6 @@ export default {
   display: flex;
   flex-direction: column;
   gap: 40px;
+  margin: 40px 0;
 }
 </style>
