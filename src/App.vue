@@ -12,12 +12,9 @@
         option-label="name"
         @select-update="onSelectUpdate"
     />
-<!--    <MultilineTextTable/>-->
-    <TableWithSearchComponent>
-
-    </TableWithSearchComponent>
+    <MultilineTextTable/>
+    <TableWithSearchComponent/>
   </div>
-
 </template>
 
 <script>

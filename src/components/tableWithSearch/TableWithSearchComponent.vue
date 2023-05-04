@@ -44,7 +44,6 @@
 </template>
 
 <script>
-import MultilineTextComponent from "@/components/multilineTextComponent/MultilineTextComponent.vue";
 import SelectComponent from "../selectComponent/SelectComponent.vue";
 import DataTable from "primevue/datatable";
 import InputText from "primevue/inputtext";
@@ -54,11 +53,10 @@ import Button from "primevue/button";
 export default {
   name: "TableWithSearchComponent",
   components: {
-    MultilineTextComponent,
     SelectComponent,
     DataTable,
-    Column,
     InputText,
+    Column,
     Button
   },
   data() {
